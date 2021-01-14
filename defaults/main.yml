@@ -2,10 +2,6 @@
 tmp: ~/temp
 # installation folder
 opt: /opt
-# jdk rpm file name
-jdk_file: jdk-8u261-linux-x64.rpm
-# list servers to download jdk
-jdk_mirrors: ["https://s3.amazonaws.com/datapassport-lib"]
 # The type of the node: slave / master / resourcemanager / nodemanager / datanode / namenode
 hadoop_type_of_node: slave
 # Hadoop base directory to install the software
@@ -13,11 +9,11 @@ hadoop_home: "{{ opt }}/hadoop-2.X"
 
 hadoop_clusterid: "cibc-prod-1"
 
-hadoop_tmp_dir: /apps/hadoop
+hadoop_tmp_dir: "{{ opt }}/hadoop-tmp"
 policy_share_root: "/apps"
 yarn_nodemanager_log_dirs: "/apps/logs/yarn/userlogs"
 # List of servers to download the hadoop code
-hadoop_mirrors: [ "http://ftp.osuosl.org/pub/apache/hadoop/core/", "http://apache.rediris.es/hadoop/core/", "http://ftp.cixug.es/apache/hadoop/core/", "http://www-eu.apache.org/dist/hadoop/common/" ]
+hadoop_mirrors: [ "https://archive.apache.org/dist/hadoop/core/" ]
 # Hadoop version to install
 hadoop_version: 2.7.7
 # A dictionary with a set of properties to set in the hdfs-site.xml
@@ -35,3 +31,5 @@ yarn_props: {
   yarn.nodemanager.vmem-check-enabled: false,
   yarn.nodemanager.log-dirs: /tmp/userlogs
 }
+
+download: false
