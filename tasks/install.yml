@@ -27,4 +27,4 @@
       PATH=$PATH:{{ hadoop_home }}/bin
       export HADOOP_HOME={{ hadoop_home }}
 
-- lineinfile: dest="{{ hadoop_home }}/etc/hadoop/hadoop-env.sh" regexp=JAVA_HOME= line="export JAVA_HOME=/usr/lib/jvm/jre"
+- lineinfile: dest="{{ hadoop_home }}/etc/hadoop/hadoop-env.sh" regexp=JAVA_HOME= line="export JAVA_HOME={{ lookup('env', 'JAVA_HOME') }}"
